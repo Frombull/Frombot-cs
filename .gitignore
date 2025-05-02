@@ -1,0 +1,59 @@
+# Build artifacts
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Visual Studio Code settings
+.vscode/
+
+# Rider IDE
+.idea/
+
+# .NET-specific
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Environment variables
+.env
+
+# NuGet packages
+*.nupkg
+packages/
+*.snupkg
+
+# Global JetBrains IDE caches
+~$*
+
+# ReSharper files
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# Backup & temp files
+*.bak
+*.tmp
+*.swp
+
+# Auto-generated files
+Generated_Code/
+
+# Test results
+TestResults/
+
+# Mac/Linux system files
+*.swp
+*.swo
