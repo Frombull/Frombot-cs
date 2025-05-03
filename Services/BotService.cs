@@ -1,14 +1,16 @@
 using Discord;
+using DotNetEnv;
 using Discord.Commands;
-using Discord.WebSocket;
 using Frombot.Commands;
+using Discord.WebSocket;
 using Frombot.Configuration;
 
 namespace Frombot.Services;
 
+
 public class BotService
 {
-    private readonly DiscordSocketClient bot;
+    protected readonly DiscordSocketClient bot;
     private readonly string? botToken;
 
     public BotService()
@@ -19,6 +21,7 @@ public class BotService
             MessageCacheSize = 30
         });
 
+        Env.Load();
         botToken = Environment.GetEnvironmentVariable("BOT_TOKEN");
 
         if (string.IsNullOrEmpty(botToken))
@@ -26,13 +29,16 @@ public class BotService
 
         bot.Ready += OnReadyAsync;
         bot.MessageReceived += OnMessageReceivedAsync;
-        bot.Log += LogAsync;
+        bot.Log += Logger.Log;
     }
 
     public async Task InitializeAsync()
     {
         await bot.LoginAsync(TokenType.Bot, botToken);
         await bot.StartAsync();
+        await bot.SetActivityAsync(new Game("with your mom"));
+
+        await Task.Delay(Timeout.Infinite);
     }
 
     private Task OnReadyAsync()
@@ -46,24 +52,21 @@ public class BotService
     {
         if (message.Author.IsBot || message is not SocketUserMessage userMessage) return;
 
-        int argPos = 0;
+        if (!userMessage.Content.StartsWith(BotConfig.CommandPrefix)) return;
 
-        if (userMessage.HasCharPrefix(BotConfig.CommandPrefix, ref argPos))
+        string command = userMessage.Content.Split(' ')[0].Substring(1).ToLower().Trim();
+
+        switch (command)
         {
-            string command = userMessage.Content.Substring(argPos).ToLower();
-
-            switch (command)
-            {
-                case "ping":
-                    await new PingCommand().ExecuteAsync(message);
-                    break;
-            }
+            case "ping":
+                await new PingCommand().ExecuteAsync(message);
+                break;
+            
+            case "msg" or "message":
+                await Logger.Log("Message command received");
+                await new MessageCommand(bot).HandleMessageCommand(message);
+                break;
+            
         }
-    }
-
-    private Task LogAsync(LogMessage log)
-    {
-        Console.WriteLine($"{log}");
-        return Task.CompletedTask;
     }
 }
