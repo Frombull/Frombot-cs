@@ -37,7 +37,7 @@ Versão em C# do meu bot de discord em python [Frombot](https://github.com/Fromb
 
 ## 📜 Licença
 
-Este projeto está sob a licença `MIT LICENSE`
+Este projeto está sob a `MIT LICENSE`
 
 Feito com ❤️ em C#
 

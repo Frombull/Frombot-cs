@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frombot-cs", "Frombot-cs.csproj", "{7E6E2420-AC3C-C023-1410-800A03E494ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frombot", "Frombot.csproj", "{7E6E2420-AC3C-C023-1410-800A03E494ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

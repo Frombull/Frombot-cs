@@ -37,6 +37,7 @@ public class BotService
 
     private Task OnReadyAsync()
     {
+        Console.WriteLine($"------------------------------");
         Console.WriteLine($"[{DateTime.Now:HH:mm:ss}] I'M ALIVE!");
         return Task.CompletedTask;
     }
@@ -62,7 +63,7 @@ public class BotService
 
     private Task LogAsync(LogMessage log)
     {
-        Console.WriteLine($" {log}");
+        Console.WriteLine($"{log}");
         return Task.CompletedTask;
     }
 }
