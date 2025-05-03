@@ -1,4 +1,6 @@
-<img src="Config/Frombot.png" width="64" height="64" />
+<img src="Config/Frombot.png" width="80" height="80" />
+
+![workflow](https://github.com/Frombull/Frombot-cs/actions/workflows/dotnet.yml/badge.svg)
 
 # Frombot-cs
 
